@@ -1,7 +1,7 @@
 package io.cloudstate.samples.friends;
 
 import io.cloudstate.javasupport.*;
-import cloudstate.samples.chat.friends.*;
+//import io.cloudstate.
 
 public class Main {
 	public static void main(String[] args) {
