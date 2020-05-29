@@ -35,6 +35,19 @@
   </properties>
 
   <dependencies>
+
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java</artifactId>
+      <version>3.11.4</version>
+    </dependency>
+
+    <dependency>
+      <groupId>com.google.protobuf</groupId>
+      <artifactId>protobuf-java-util</artifactId>
+      <version>3.11.4</version>
+    </dependency>
+
     <dependency>
       <groupId>io.cloudstate</groupId>
       <artifactId>cloudstate-java-support</artifactId>
@@ -94,6 +107,9 @@
           <language>Java</language>
           <generateClient>false</generateClient>
           <generateServer>true</generateServer>
+          <protoPaths>
+            <protoPath>src/main/proto</protoPath>
+          </protoPaths>
         </configuration>
         <executions>
           <execution>
