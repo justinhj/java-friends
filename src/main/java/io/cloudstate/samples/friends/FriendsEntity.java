@@ -5,7 +5,8 @@ package io.cloudstate.samples.friends;
 import com.google.protobuf.Empty;
 import io.cloudstate.javasupport.EntityId;
 import io.cloudstate.javasupport.crdt.CrdtEntity;
-import io.cloudstate.javasupport.eventsourced.*;
+import cloudstate.samples.chat.friends.*;
+import io.cloudstate.javasupport.crdt.*;
 
 import java.util.*;
 import java.util.stream.Collectors;
