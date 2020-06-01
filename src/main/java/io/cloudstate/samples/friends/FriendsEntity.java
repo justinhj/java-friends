@@ -1,7 +1,7 @@
 package io.cloudstate.samples.friends;
 
-// import com.example.chat.
-// import com.example.shoppingcart.persistence.Domain;
+import java.util.Arrays;
+
 import com.google.protobuf.Empty;
 import io.cloudstate.javasupport.crdt.*;
 import cloudstate.samples.chat.friends.grpc.*;
@@ -12,11 +12,6 @@ public class FriendsEntity {
 
   private final ORSet<Friend> friends;
 
-  // defaultValue = new CR
-
-  // public FriendsEntity(@EntityId String entityId) {
-  //   this.entityId = entityId;
-  // }
   public FriendsEntity(ORSet<Friend> friends) {
     this.friends = friends;
   }
@@ -27,5 +22,16 @@ public class FriendsEntity {
     return Empty.getDefaultInstance();
   }
 
+  @CommandHandler
+  public FriendsList getFriends(User user) {
+    Friend[] friendsArray = new Friend [10];
+    Iterable<Friend> friendsIterable = Arrays.asList(friendsArray);
+    return FriendsList.newBuilder().addAllFriends(friendsIterable).build();
+  }
 
+  @CommandHandler
+  public Empty remove(FriendRequest req) {
+    friends.remove(req.getFriend());
+    return Empty.getDefaultInstance();
+  }
 }
