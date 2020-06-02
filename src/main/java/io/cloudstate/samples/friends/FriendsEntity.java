@@ -1,6 +1,7 @@
 package io.cloudstate.samples.friends;
 
 import java.util.Arrays;
+import java.util.Iterator;
 
 import io.cloudstate.javasupport.crdt.*;
 import cloudstate.samples.chat.friends.grpc.*;
@@ -23,9 +24,13 @@ public class FriendsEntity {
 
   @CommandHandler
   public FriendsList getFriends(User user) {
-    Friend[] friendsArray = new Friend [10];
-    Iterable<Friend> friendsIterable = Arrays.asList(friendsArray);
-    return FriendsList.newBuilder().addAllFriends(friendsIterable).build();
+    Iterator<Friend> fi = friends.iterator();
+    FriendsList.Builder b = FriendsList.newBuilder();
+    for(Friend f: friends) {
+      b.addFriends(f);
+    }
+
+    return b.build();
   }
 
   @CommandHandler
