@@ -2,7 +2,6 @@ package io.cloudstate.samples.friends;
 
 import java.util.Arrays;
 
-import com.google.protobuf.Empty;
 import io.cloudstate.javasupport.crdt.*;
 import cloudstate.samples.chat.friends.grpc.*;
 

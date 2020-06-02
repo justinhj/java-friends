@@ -44,3 +44,4 @@ target-sbt
 .settings/
 .vscode/
 dependency-reduced-pom.xml
+docker/.env
