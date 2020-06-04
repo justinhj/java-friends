@@ -37,7 +37,7 @@ jobs:
           tar xvzf csutil.tar.gz
           sudo mv ./csctl /usr/local/bin/csctl
       - name: Temp test kubectl is installed
-        run: kubectl version
+        run: kubectl version --client=true
       - name: Temp test csctl is installed
         run: csctl version
 
