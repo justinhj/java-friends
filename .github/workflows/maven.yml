@@ -35,7 +35,7 @@ jobs:
         run: |
           curl https://downloads.lbcs.io/0.0.8/csctl_linux_amd64_0.0.8.tar.gz -o csutil.tar.gz
           tar xvzf csutil.tar.gz
-          mv csctl ~/.local/bin
+          sudo mv ./csctl /usr/local/bin/csctl
       - name: Temp test kubectl is installed
         run: kubectl version
       - name: Temp test csctl is installed
