@@ -27,6 +27,11 @@ jobs:
         run: mvn -B package --file pom.xml
       - name: Build docker image
         run: mvn io.fabric8:docker-maven-plugin:0.26.1:build
+      - uses: azure/docker-login@v1
+        with:
+          login-server: index.docker.io
+          username: ${{ secrets.DOCKERIO_USERNAME }}
+          password: ${{ secrets.DOCKERIO_PASSWORD }}
       - name: Push image
         run: mvn io.fabric8:docker-maven-plugin:0.26.1:push
       - name: Install kubectl
