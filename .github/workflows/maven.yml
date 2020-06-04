@@ -20,8 +20,10 @@ jobs:
         uses: actions/setup-java@v1
         with:
           java-version: 1.8
-      - name: Build with Maven
+      - name: Build package
         run: mvn -B package --file pom.xml
+      - name: Build docker image
+        run: mvn io.fabric8:docker-maven-plugin:0.26.1:build
       - name: Push image
         run: mvn io.fabric8:docker-maven-plugin:0.26.1:push
       - name: Install kubectl
