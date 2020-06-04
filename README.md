@@ -28,7 +28,8 @@ java -jar target/friends-0.1.0.jar
 Cloudstate deployment requires your code to run in a container. The following process builds the container.
 
 ```
-DOCKER_PUBLISH_TO=YourDockerHubName ./dockerbuild.sh
+mvn io.fabric8:docker-maven-plugin:0.26.1:build
+mvn io.fabric8:docker-maven-plugin:0.26.1:push
 ```
 
 ### TODO
