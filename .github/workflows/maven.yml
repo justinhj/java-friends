@@ -25,15 +25,20 @@ jobs:
           properties: '[{"docker.name": "java-friends:latest"}]'  
       - name: Build package
         run: mvn -B package --file pom.xml
-      - name: Build docker image
+      - name: Build Docker image
         run: mvn io.fabric8:docker-maven-plugin:0.26.1:build
-      - uses: azure/docker-login@v1
+#       - uses: azure/docker-login@v1
+#         with:
+#           login-server: docker.io
+#           username: ${{ secrets.DOCKERIO_USERNAME }}
+#           password: ${{ secrets.DOCKERIO_PASSWORD }}
+      - uses: actions/checkout@master
+      - name: Publish to Registry
+        uses: elgohr/Publish-Docker-Github-Action@master
         with:
-          login-server: docker.io
+          name: justinhj/java-friends
           username: ${{ secrets.DOCKERIO_USERNAME }}
           password: ${{ secrets.DOCKERIO_PASSWORD }}
-      - name: Push image
-        run: mvn io.fabric8:docker-maven-plugin:0.26.1:push
       - name: Install kubectl
         run: |
           sudo apt-get update && sudo apt-get install -y apt-transport-https
